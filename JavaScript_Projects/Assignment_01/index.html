@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment_01</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container{
+            width: 80%;
+            height: 100vh;
+            background-color: azure;
+            align-items: center;
+            text-align: center;
+        }
+        #showArr{
+            width: 80%;
+            height: 20vh;
+        }
+        input{
+            width: 40%;
+            font-size: 18px;
+            padding: 8px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        #showArray{
+            padding-top: 10px;
+            font-size: 20px;
+            border: 2px solid black;
+            margin: 10px auto;
+            border-radius: 10px;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  
+</head>
+<body>
+    <div class="container">
+        <div id="showArray"></div>
+        <input type="text" class="my-4" style="width: 40%;" id="userSearch" placeholder="Search here" required> <br>
+        <button id="search" class="btn btn-primary my-3">Search</button> <br> <br>
+        <input type="text" id="userInput" placeholder="Enter a color"> <br>
+        <button id="addIn1st" class="btn btn-primary my-3">AddInFirst</button> 
+        <button id="addInLast" class="btn btn-primary">AddInLast</button>
+        <button id="delete1st" class="btn btn-primary">Delete1st</button>
+        <button id="deleteLast" class="btn btn-primary">DeleteLast</button>
+        <button id="sort" class="btn btn-primary">Sort</button>
+        <button id="reverse" class="btn btn-primary my-4">Reverse</button> <br> <br>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  
+    <script src="index.js"></script>
+</body>
+</html>
