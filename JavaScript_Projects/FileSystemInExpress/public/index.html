@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File-System In Express</title>
+    <style>
+        .container{
+            text-align: center;
+            padding-bottom: 50px;
+        }
+        button{
+            background-color: brown;
+            color: white;
+            font-weight: bold;
+            padding: 16px;
+            border-radius: 10px;
+            border: 2px solid white;
+            font-size: 16px;
+        }
+        button:hover{
+            border: 2px solid yellow;
+        }
+        body{
+            background-color: coral;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button id="createFileBtn">Create-File</button>
+        <button id="showFileBtn">Show-File</button>
+        <button id="updateFileBtn">Update-File</button>
+        <button id="deleteFileBtn">Delete-File</button>
+    </div>
+    <div class="container">
+        <textarea id="showTextFile" cols="30" rows="10"></textarea>
+    </div>
+
+    <script>
+        let createFileBtn = document.querySelector("#createFileBtn");
+        let showFileBtn = document.querySelector("#showFileBtn");
+        let updateFileBtn = document.querySelector("#updateFileBtn");
+        let deleteFileBtn = document.querySelector("#deleteFileBtn");
+        let showTextFile = document.querySelector("#showTextFile");
+
+        // Create File with fetch POST
+        createFileBtn.addEventListener('click',()=>{
+            fetch('/create-file',{
+                method : 'POST'
+            })
+            .then(response => response.text())
+            .then(data => alert(data))
+            .catch(err => console.log('Error', err))
+        })
+
+        // Show File with fetch GET
+        showFileBtn.addEventListener('click',()=>{
+            fetch('/show-file')
+            .then(response => {
+                if(!response.ok){
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => showTextFile.value = data)
+            .catch(err => console.log('Error', err))
+        });
+
+        // Update File with fetch PUT
+        updateFileBtn.addEventListener('click',()=>{
+            let obj = {
+                text : showTextFile.value
+            }
+            fetch('/update-file',{
+                method: 'PUT',
+                headers : {
+                    'Content-type' : 'application/json'
+                },
+                body : JSON.stringify(obj)
+            })
+            .then(response => response.text())
+            .then(data => alert(data))
+            .catch(err => console.log('Error', err))
+        });
+
+        // Delete File with fetch DELETE
+        deleteFileBtn.addEventListener('click',()=>{
+            fetch('/delete-file',{
+                method: 'DELETE'
+            })
+            .then(response => response.text())
+            .then(data => alert(data))
+            .catch(err => console.log('Error', err))
+        });
+
+    </script>
+</body>
+</html>
