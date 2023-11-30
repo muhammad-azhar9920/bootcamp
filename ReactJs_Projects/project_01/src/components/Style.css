@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ///////////////// Navbar ///////////////  */
+.myNavbar li a{
+    color: wheat;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* //////////////////// Home //////////////  */
+.home{
+    height: 90vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.homeImg{
+    box-shadow: -10px 10px 10px gray;
+}
+/* //////////////////// Map //////////////  */
+.myMap{
+    height: 80%;
+    box-shadow: -10px 8px 10px gray;
+}
+/* //////////////////// About //////////////  */
+.about{
+    height: 80vh;
+}
