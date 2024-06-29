@@ -1,7 +1,27 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function AddProduct() {
+
+  useEffect(() => {
+    checkAuth()
+  }, []);
+
+  const navigate = useNavigate();
+
+  const checkAuth = async ()=>{
+    let res = await fetch('http://localhost:8000/checkauth',{
+      credentials: 'include',
+    });
+    res = await res.json();
+    // console.log(res);
+    if(res.success){
+      console.log('You are authorized');
+    }else{
+      navigate('/login');
+    }
+  } 
 
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
@@ -31,6 +51,8 @@ export default function AddProduct() {
       setCompany("");
       if (res.success) {
         alert(res.msg);
+      }else{
+        alert(res.Error);
       }
     } catch (error) {
       console.log(error);
@@ -46,34 +68,43 @@ export default function AddProduct() {
             <span className=''>NAME:</span>
             <input type="text"
               onChange={(e) => { setName(e.target.value) }}
+              value={name}
               className='border-black ms-9 border-2 py-1 px-1 rounded-lg'
+              required={true}
               placeholder='Enter Product Name' />
           </div>
           <div className='my-2'>
             <span className=''>PRICE:</span>
             <input type="text"
               onChange={(e) => { setPrice(e.target.value) }}
+              value={price}
               className='border-black ms-10 border-2 py-1 px-1 rounded-lg'
+              required={true}
               placeholder='Enter Product Price' />
           </div>
           <div className='my-2'>
             <span className=''>COLOR:</span>
             <input type="text"
               onChange={(e) => { setColor(e.target.value) }}
+              value={color}
               className='border-black ms-9 border-2 py-1 px-1 rounded-lg'
+              required={true}
               placeholder='Enter Product Color' />
           </div>
           <div className='my-2'>
             <span className='me-3'>COMPANY:</span>
             <input type="text"
               onChange={(e) => { setCompany(e.target.value) }}
+              value={company}
               className='border-black border-2 py-1 px-1 rounded-lg'
+              required={true}
               placeholder='Enter Product Company' />
           </div>
           <div className='my-2'>
             IMAGE:
             <input type="file"
               onChange={(e) => { setFile(e.target.files[0]) }}
+              required={true}
               className='border-black border-2 py-1 px-1 rounded-lg' />
           </div>
           <div>
