@@ -2,26 +2,13 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function AddProduct() {
+export default function AddProduct({checkAuth}) {
 
+  const navigate = useNavigate(); 
   useEffect(() => {
-    checkAuth()
+    checkAuth(navigate)
   }, []);
 
-  const navigate = useNavigate();
-
-  const checkAuth = async ()=>{
-    let res = await fetch('http://localhost:8000/checkauth',{
-      credentials: 'include',
-    });
-    res = await res.json();
-    // console.log(res);
-    if(res.success){
-      console.log('You are authorized');
-    }else{
-      navigate('/login');
-    }
-  } 
 
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
