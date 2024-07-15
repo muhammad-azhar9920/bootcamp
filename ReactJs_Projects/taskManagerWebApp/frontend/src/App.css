@@ -1,0 +1,23 @@
+.mynav-link{
+    text-decoration: none;
+    font-size: 1.4rem;
+    padding-left: 1rem;
+}
+.mynav-li:hover{
+    font-weight: bold;
+}
+.active{
+    font-weight: bold;
+}
+.alert{
+    width: 30vw;
+    position: absolute;
+    bottom: 5%;
+    left: 36%;
+}
+.cursor-pointer{
+    cursor: pointer;
+}
+.size_2rem{
+    font-size: 2rem;
+}
